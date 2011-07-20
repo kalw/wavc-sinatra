@@ -1,0 +1,10 @@
+<ul>
+	<% content.each do |item| %>
+		<%="<li> "%>
+		<% if item["class"] == AirVideo::Client::FolderObject %>
+			<% item["path"] = request.chomp("/") unless item["path"].nil? %>
+			<%="<a href=\"#{item["path"]}/#{item["idx"]}\"><img src=\"http://redmine.indolore.net/images/bullet_toggle_plus.png\"></a> "%>
+		<% end %>
+		<%=" #{item["name"]} </li>"%>
+	<% end %>
+</ul>

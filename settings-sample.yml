@@ -1,0 +1,4 @@
+---
+airvideo_server: "0.0.0.0"
+airvideo_port: "45631"
+airvideo_passwd: "passwd"

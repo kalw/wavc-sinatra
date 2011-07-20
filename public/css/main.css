@@ -1,0 +1,10 @@
+li {
+ font-family: Arial, sans-serif;
+ font-size: 100%;
+ color: black;
+ list-style-type: none;
+ #background-image: url("http://redmine.indolore.net/images/bullet_toggle_plus.png");
+ background-repeat: no-repeat;
+ background-position: 0 0.32em;
+ padding-left: 15px;
+} 
