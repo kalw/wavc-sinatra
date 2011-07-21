@@ -1,9 +1,9 @@
-# Wavc
+# WAVC
 
 
 
 
-## Installation
+## INSTALLATION
 
 
 ### ALL PLATEFORMS
@@ -58,11 +58,11 @@
 	$ gem install sinatra
 
 
-## Usage
+## USAGE
 
 
 
-## Configuration
+## CONFIGURATION
 
 
 
@@ -74,7 +74,7 @@
 
 
 
-## Contributing
+## CONTRIBUTING
 
 Please report issues on the [Github issue
 tracker](https://github.com/kalw/wavc-sinatra/issues)
