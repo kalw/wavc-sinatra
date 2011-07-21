@@ -5,16 +5,20 @@
 
 ## Installation
 
-ALL PLATEFORMS
+
+**ALL PLATEFORMS
 
 *Optionnal
+
 	$ gem install thin
+
 *Mandatory
+
 	$ gem install airvideo
 	$ gem install sinatra
 	$ 
 
-WINDOWS PLATEFORM
+**WINDOWS PLATEFORM
 
 1. Download and install Ruby for Windows
 	http://rubyinstaller.org/downloads/
