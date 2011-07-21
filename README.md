@@ -5,16 +5,16 @@
 
 ## Installation
 
-** All
+**ALL PLATEFORMS
 
-** Optionnal
+**optionnal
 	$ % gem install thin
-** Mandatory
+**mandatory
 	$ % gem install airvideo
 	$ % gem install sinatra
 	$ 
 
-** Windows
+**Windows
 
 1. Download and install Ruby for Windows
 	http://rubyinstaller.org/downloads/
@@ -44,15 +44,15 @@ Install EventMachine locally.
 
 ## FAQ
 
-**Q:** How do you pronounce Leiningen?  
-**A:** It's LINE-ing-en. ['la?n???n]
+**Q:**   
+**A:** 
 
 
 
 ## Contributing
 
 Please report issues on the [Github issue
-tracker](https://github.com/technomancy/leiningen/issues)
+tracker](https://github.com/kalw/wavc-sinatra/issues)
 
 
 ## License
