@@ -33,26 +33,26 @@
 
 3. [Download](http://rubyforge.org/frs/download.php/23665/eventmachine-win32-0.8.1.gem) EventMachine 0.8.1
 
-4. Install EventMachine locally.
+4. Install EventMachine locally
 
-	$ c:\> gem install eventmachine -l
+	$ gem install eventmachine -l
 
-5. Install Ruby Thin Server, but ignore dependencies.
+5. Install Ruby Thin Server, but ignore dependencies
 
-	$ c:\> gem install thin --ignore-dependencies
+	$ gem install thin --ignore-dependencies
 
 *Mandatory
 
 6. Install Airvideo Lib
 
-	$  c:\> gem install airvideo
+	$ gem install airvideo
 7. Install Sinatra
 
-	$  c:\> gem install sinatra
+	$ gem install sinatra
 
 8. Install Airvideo Lib
 
-	$  c:\> gem install sinatra
+	$ gem install sinatra
 
 ## Usage
 
