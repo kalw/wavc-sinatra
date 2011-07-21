@@ -5,6 +5,7 @@
 
 ## Installation
 
+<<<<<<< HEAD
 ALL PLATEFORMS
 
 *Optionnal
