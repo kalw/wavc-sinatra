@@ -8,6 +8,7 @@
 
 **ALL PLATEFORMS
 
+
 *Optionnal
 
 	$ gem install thin
@@ -18,7 +19,9 @@
 	$ gem install sinatra
 	$ 
 
+
 **WINDOWS PLATEFORM
+
 
 1. Download and install Ruby for Windows
 	http://rubyinstaller.org/downloads/
