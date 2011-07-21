@@ -9,11 +9,11 @@
 ### ALL PLATEFORMS
 
 
-#### Optionnal
+**Optionnal**
 
 	$ gem install thin
 
-#### Mandatory
+**Mandatory**
 
 	$ gem install airvideo
 	$ gem install sinatra
@@ -25,7 +25,7 @@
 
 1. [Download](http://rubyinstaller.org/downloads/) and install Ruby for Windows
 	
-*Otionnal
+**Otionnal**
 
 2. Install Rack.
 
@@ -33,26 +33,30 @@
 
 3. [Download](http://rubyforge.org/frs/download.php/23665/eventmachine-win32-0.8.1.gem) EventMachine 0.8.1
 
-4. Install EventMachine locally.
 
-	$ c:\> gem install eventmachine -l
+4. Install EventMachine locally
 
-5. Install Ruby Thin Server, but ignore dependencies.
+	$ gem install eventmachine -l
 
-	$ c:\> gem install thin --ignore-dependencies
+5. Install Ruby Thin Server, but ignore dependencies
+
+	$ gem install thin --ignore-dependencies
+
 
 *Mandatory
 
 6. Install Airvideo Lib
 
-	$  c:\> gem install airvideo
+
+	$ gem install airvideo
 7. Install Sinatra
 
-	$  c:\> gem install sinatra
+	$ gem install sinatra
 
 8. Install Airvideo Lib
 
-	$  c:\> gem install sinatra
+	$ gem install sinatra
+
 
 ## Usage
 
