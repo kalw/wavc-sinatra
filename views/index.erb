@@ -1,10 +1,41 @@
-<ul>
-	<% content.each do |item| %>
-		<%="<li> "%>
-		<% if item["class"] == AirVideo::Client::FolderObject %>
-			<% item["path"] = request.chomp("/") unless item["path"].nil? %>
-			<%="<a href=\"#{item["path"]}/#{item["idx"]}\"><img src=\"http://redmine.indolore.net/images/bullet_toggle_plus.png\"></a> "%>
+<script>
+jQuery(document).ready(function($) {
+	$.facebox.settings.closeImage = '/images/facebox/closelabel.png'
+	$.facebox.settings.loadingImage = '/images/facebox/loading.gif'
+  	$('a[rel*=facebox]').facebox()
+})
+</script>
+
+<table>
+<tbody>
+	<%="<tr> "%>
+		<%="<td> "%>
+		<%="</td> "%>
+		<%="<td> "%>
+			<% if  path !=~ /^$/    %>
+				<%="<li><a href=\"..\">..</a></li>"%>
+			<% end %>
+		<%="</td> "%>
+		<%="<td> "%>
+		<%="</td> "%>
+	<%="</tr> "%>
+<% content.each do |item| %>
+	<%="<tr> "%>
+		<%="<td> "%>
+			<% if item["class"] == AirVideo::Client::FolderObject %>
+				<% item["path"] = request.chomp("/") unless item["path"].nil? %>
+				<%="<a href=\"#{item["path"]}/#{item["idx"]}\"><img src=\"/images/bullet_cross.png\"></a> "%>
+			<% end %>
+		<%="</td> "%>
+		<%="<td> "%>
+			<%=" #{item["name"]} "%>
+		<%="</td> "%>
+		<%="<td> "%>
+		<% if item["class"] == AirVideo::Client::VideoObject %>
+			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"/divxwebplayer.html?url=#{item["url"]}\"><img src=\"/images/bullet_play.png\"  ></a>"%>
 		<% end %>
-		<%=" #{item["name"]} </li>"%>
-	<% end %>
-</ul>
+		<%="</td> "%>
+	<%="</tr> "%>
+<% end %>
+</tbody>
+</table>
