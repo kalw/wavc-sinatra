@@ -7,20 +7,19 @@ CONFIG = YAML::load(File.open('settings.yml')) unless defined? CONFIG
 
 class Wavc 
 	def walk(path)
-		depth = 0
 		idx = 0
 		list = Array.new(2, Hash.new)
 		item = Array.new(2, Hash.new)	
-		item[depth]['command'] = "AirVideo::Client.new('#{CONFIG["airvideo_server"]}','#{CONFIG["airvideo_port"]}','#{CONFIG["airvideo_passwd"]}').ls"	
+		item['command'] = "AirVideo::Client.new('#{CONFIG["airvideo_server"]}','#{CONFIG["airvideo_port"]}','#{CONFIG["airvideo_passwd"]}').ls"	
 		path = path.split("/")
 		path.each do |gate|		
-			item[depth]['command'] += "[#{gate}].ls" 
+			item['command'] += "[#{gate}].ls" 
 		end
-		puts "Command : #{item[depth]['command']}"
+		puts "Command : #{item['command']}"
 		puts "Path : #{path}"
-		item[depth]['length'] = (eval item[depth]['command']).length
-		puts "Returned records  : #{item[depth]['length']}"
-			(eval item[depth]['command']).each do |enum|
+		item['length'] = (eval item['command']).length
+		puts "Returned records  : #{item['length']}"
+			(eval item['command']).each do |enum|
 				puts "Item name  : #{enum.name}"
 				puts "Item class :  #{enum.class}"
 				if enum.class == AirVideo::Client::VideoObject 
