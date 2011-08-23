@@ -5,21 +5,51 @@ require 'yaml'
 
 CONFIG = YAML::load(File.open('settings.yml')) unless defined? CONFIG
 
+helpers do
+	def clippy(text, bgcolor='#FFFFFF')
+	  html = <<-EOF
+	    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+	            width="110"
+	            height="14"
+	            id="clippy" >
+	    <param name="movie" value="/flash/clippy.swf"/>
+	    <param name="allowScriptAccess" value="always" />
+	    <param name="quality" value="high" />
+	    <param name="scale" value="noscale" />
+	    <param NAME="FlashVars" value="text=#{text}">
+	    <param name="bgcolor" value="#{bgcolor}">
+	    <embed src="/flash/clippy.swf"
+	           width="110"
+	           height="14"
+	           name="clippy"
+	           quality="high"
+	           allowScriptAccess="always"
+	           type="application/x-shockwave-flash"
+	           pluginspage="http://www.macromedia.com/go/getflashplayer"
+	           FlashVars="text=#{text}"
+	           bgcolor="#{bgcolor}"
+	    />
+	    </object>
+	  EOF
+	end
+end
+
 class Wavc 
 	def walk(path)
+		depth = 0
 		idx = 0
 		list = Array.new(2, Hash.new)
 		item = Array.new(2, Hash.new)	
-		item['command'] = "AirVideo::Client.new('#{CONFIG["airvideo_server"]}','#{CONFIG["airvideo_port"]}','#{CONFIG["airvideo_passwd"]}').ls"	
+		item[depth]['command'] = "AirVideo::Client.new('#{CONFIG["airvideo_server"]}','#{CONFIG["airvideo_port"]}','#{CONFIG["airvideo_passwd"]}').ls"	
 		path = path.split("/")
 		path.each do |gate|		
-			item['command'] += "[#{gate}].ls" 
+			item[depth]['command'] += "[#{gate}].ls" 
 		end
-		puts "Command : #{item['command']}"
+		puts "Command : #{item[depth]['command']}"
 		puts "Path : #{path}"
-		item['length'] = (eval item['command']).length
-		puts "Returned records  : #{item['length']}"
-			(eval item['command']).each do |enum|
+		item[depth]['length'] = (eval item[depth]['command']).length
+		puts "Returned records  : #{item[depth]['length']}"
+			(eval item[depth]['command']).each do |enum|
 				puts "Item name  : #{enum.name}"
 				puts "Item class :  #{enum.class}"
 				if enum.class == AirVideo::Client::VideoObject 
