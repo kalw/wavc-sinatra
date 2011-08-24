@@ -12,8 +12,8 @@ jQuery(document).ready(function($) {
 		<%="<td> "%>
 		<%="</td> "%>
 		<%="<td> "%>
-			<% if  path !=~ /^$/    %>
-				<%="<li><a href=\"..\">..</a></li>"%>
+			<% if !path.empty?  %>
+				<%="<li><a href=\"#{request}\\..\">..</a></li>"%>
 			<% end %>
 		<%="</td> "%>
 		<%="<td> "%>
@@ -33,6 +33,9 @@ jQuery(document).ready(function($) {
 		<%="<td> "%>
 		<% if item["class"] == AirVideo::Client::VideoObject %>
 			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"/divxwebplayer.html?url=#{item["url"]}\"><img src=\"/images/bullet_play.png\"  ></a>"%>
+		<%="</td> "%>
+		<%="<td> "%>
+			<%=""+ clippy(item["url"])+"" %>
 		<% end %>
 		<%="</td> "%>
 	<%="</tr> "%>
