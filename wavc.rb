@@ -6,6 +6,26 @@ require 'yaml'
 CONFIG = YAML::load(File.open('settings.yml')) unless defined? CONFIG
 
 helpers do
+	def divxplayer(url)
+		<object classid="clsid:67DABFBF-D0AB-41fa-9C46-CC0F21721616" 
+			width="320"
+			height="260"
+			codebase="http://go.divx.com/plugin/DivXBrowserPlugin.cab" >
+		<param name="custommode" value="none" />
+		<param name="autoPlay" value="false" />
+		<param name="src" value="url" />
+		<embed type="video/divx"
+			src="url"
+			custommode="none"
+			width="320"
+			height="260"
+			autoPlay="false"
+			pluginspage="http://go.divx.com/plugin/download/"
+		</embed>
+		</object>
+		<br />No video? <a href="http://www.divx.com/software/divx-plus/web-player" target="_blank">Download</a> the DivX Plus Web Player.
+	end
+
 	def clippy(text, bgcolor='#FFFFFF')
 	  html = <<-EOF
 	    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
