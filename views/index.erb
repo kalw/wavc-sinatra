@@ -6,21 +6,27 @@ jQuery(document).ready(function($) {
 })
 </script>
 
-<table>
+<table border=0 >
 <tbody>
 	<%="<tr> "%>
 		<%="<td> "%>
 		<%="</td> "%>
 		<%="<td> "%>
 			<% if !path.empty?  %>
-				<%="<li><a href=\"#{request}\\..\">..</a></li>"%>
+				<%="<center><a href=\"#{request}\\..\">..</a></center>"%>
 			<% end %>
+		<%="</td> "%>
+		<%="<td> "%>
+		<%="</td> "%>
+		<%="<td> "%>
 		<%="</td> "%>
 		<%="<td> "%>
 		<%="</td> "%>
 	<%="</tr> "%>
 <% content.each do |item| %>
 	<%="<tr> "%>
+		<%="<td> "%>
+		<%="</td> "%>
 		<%="<td> "%>
 			<% if item["class"] == AirVideo::Client::FolderObject %>
 				<% item["path"] = request.chomp("/") unless item["path"].nil? %>
@@ -35,9 +41,12 @@ jQuery(document).ready(function($) {
 			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"/divxwebplayer.html?url=#{item["url"]}\"><img src=\"/images/bullet_play.png\"  ></a>"%>
 		<%="</td> "%>
 		<%="<td> "%>
-			<%=""+ clippy(item["url"])+"" %>
-		<% end %>
+			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"http://192.168.128.16:8080/xbmcCmds/xbmcHttp?command=ExecBuiltIn%28PlayMedia%28#{item["url"]}%29%29\"><img src=\"/images/xbmc16.png\"  ></a>"%>
 		<%="</td> "%>
+		<%="<td> "%>
+			<%=""+ clippy(item["url"])+"" %>
+		<%="</td> "%>
+		<% end %>
 	<%="</tr> "%>
 <% end %>
 </tbody>
