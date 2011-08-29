@@ -9,8 +9,8 @@ helpers do
 	def clippy(text, bgcolor='#FFFFFF')
 	  html = <<-EOF
 	    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
-	            width="110"
-	            height="14"
+	            width="130"
+	            height="16"
 	            id="clippy" >
 	    <param name="movie" value="/flash/clippy.swf"/>
 	    <param name="allowScriptAccess" value="always" />
@@ -18,9 +18,10 @@ helpers do
 	    <param name="scale" value="noscale" />
 	    <param NAME="FlashVars" value="text=#{text}">
 	    <param name="bgcolor" value="#{bgcolor}">
+	    <param name="wmode" value="transparent"></param>
 	    <embed src="/flash/clippy.swf"
-	           width="110"
-	           height="14"
+	           width="130"
+	           height="16"
 	           name="clippy"
 	           quality="high"
 	           allowScriptAccess="always"
@@ -28,6 +29,7 @@ helpers do
 	           pluginspage="http://www.macromedia.com/go/getflashplayer"
 	           FlashVars="text=#{text}"
 	           bgcolor="#{bgcolor}"
+		   wmode="transparent"
 	    />
 	    </object>
 	  EOF
