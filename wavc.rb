@@ -7,6 +7,7 @@ CONFIG = YAML::load(File.open('settings.yml')) unless defined? CONFIG
 
 helpers do
 	def divxplayer(url)
+	  html = <<-EOF
 		<object classid="clsid:67DABFBF-D0AB-41fa-9C46-CC0F21721616" 
 			width="320"
 			height="260"
@@ -24,6 +25,7 @@ helpers do
 		</embed>
 		</object>
 		<br />No video? <a href="http://www.divx.com/software/divx-plus/web-player" target="_blank">Download</a> the DivX Plus Web Player.
+	  EOF
 	end
 
 	def clippy(text, bgcolor='#FFFFFF')
