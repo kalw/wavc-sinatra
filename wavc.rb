@@ -14,9 +14,9 @@ helpers do
 			codebase="http://go.divx.com/plugin/DivXBrowserPlugin.cab" >
 		<param name="custommode" value="none" />
 		<param name="autoPlay" value="false" />
-		<param name="src" value="url" />
+		<param name="src" value="#{url}" />
 		<embed type="video/divx"
-			src="url"
+			src="#{url}"
 			custommode="none"
 			width="320"
 			height="260"
