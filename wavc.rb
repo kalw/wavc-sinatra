@@ -2,8 +2,22 @@ require 'rubygems' if RUBY_VERSION < "1.9"
 require 'sinatra'
 require 'airvideo'
 require 'yaml'
+require 'logger'
 
 CONFIG = YAML::load(File.open('settings.yml')) unless defined? CONFIG
+
+
+log_file = File.open('wavc.log', 'a+')
+log_file.sync = true 
+logger = Logger.new(log_file) 
+set :logger, logger
+def logger; settings.logger; end 
+if CONFIG["airvideo_debug"] == "yes"
+logger.level = Logger::DEBUG 
+else
+logger.level = Logger::ERROR
+end
+
 
 helpers do
 	def divxplayer(url)
@@ -69,18 +83,18 @@ class Wavc
 		path.each do |gate|		
 			item[depth]['command'] += "[#{gate}].ls" 
 		end
-		puts "Command : #{item[depth]['command']}"
-		puts "Path : #{path}"
-		item[depth]['length'] = (eval item[depth]['command']).length
-		puts "Returned records  : #{item[depth]['length']}"
+		logger.debug  "Command : #{item[depth]['command']}"
+		logger.debug  "Path : #{path}"
+		#item[depth]['length'] = (eval item[depth]['command']).length
+		#logger.debug  "Returned records  : #{item[depth]['length']}"
 			(eval item[depth]['command']).each do |enum|
-				puts "Item name  : #{enum.name}"
-				puts "Item class :  #{enum.class}"
+				logger.debug  "Item name  : #{enum.name}"
+				logger.debug  "Item class :  #{enum.class}"
 				if enum.class == AirVideo::Client::VideoObject 
 					url = "#{enum.url}"  
-					puts "Item url: #{url}"
+					logger.debug  "Item url: #{url}"
 					#liveurl = enum.live_url  
-					#puts "liveurl: #{liveurl}"
+					#logger.debug  "liveurl: #{liveurl}"
 				else 
 					url = nil
 					liveurl = nil
@@ -98,16 +112,16 @@ end
 
 get '/divxwebplayer.html' do
 	url = params[:url]
-	puts "url : #{url}"
+	logger.debug  "url : #{url}"
 	erb:divxwp,:locals => {:url => url }
 end
 
 get %r{/path/(([\d]\/?)*)} do
 	content = Wavc.new.walk(params[:captures].first)
-	puts "Request path: #{request.path}"
+	logger.debug  "Request path: #{request.path}"
 	path = params[:captures].first
 	path = path.split("/")
-	puts "Forwarded path : #{path}"
+	logger.debug  "Forwarded path : #{path}"
 	erb:index,:locals => {:content => content,:request => request.path, :path => path }
 end
 
