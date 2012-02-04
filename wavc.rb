@@ -6,7 +6,6 @@ require 'logger'
 
 CONFIG = YAML::load(File.open('settings.yml')) unless defined? CONFIG
 
-
 log_file = File.open('wavc.log', 'a+')
 log_file.sync = true 
 logger = Logger.new(log_file) 
@@ -18,6 +17,7 @@ else
 logger.level = Logger::ERROR
 end
 
+Command = AirVideo::Client.new( "#{CONFIG["airvideo_server"]}" , "#{CONFIG["airvideo_port"]}" , "#{CONFIG["airvideo_passwd"]}" )	
 
 helpers do
 	def divxplayer(url)
@@ -70,39 +70,39 @@ helpers do
 	    </object>
 	  EOF
 	end
+
 end
 
 class Wavc 
 	def walk(path)
-		depth = 0
-		idx = 0
+		idx  = 0
 		list = Array.new(2, Hash.new)
-		item = Array.new(2, Hash.new)	
-		item[depth]['command'] = "AirVideo::Client.new('#{CONFIG["airvideo_server"]}','#{CONFIG["airvideo_port"]}','#{CONFIG["airvideo_passwd"]}').ls"	
-		path = path.split("/")
+		item = "Command.ls"
+		path = path.split( "/" )
 		path.each do |gate|		
-			item[depth]['command'] += "[#{gate}].ls" 
+			item += "[#{gate}].ls" 
 		end
-		logger.debug  "Command : #{item[depth]['command']}"
+		logger.debug  "Gate : #{item}"
 		logger.debug  "Path : #{path}"
-		#item[depth]['length'] = (eval item[depth]['command']).length
-		#logger.debug  "Returned records  : #{item[depth]['length']}"
-			(eval item[depth]['command']).each do |enum|
+			(eval item).each do |enum|
 				logger.debug  "Item name  : #{enum.name}"
 				logger.debug  "Item class :  #{enum.class}"
-				if enum.class == AirVideo::Client::VideoObject 
-					url = "#{enum.url}"  
-					logger.debug  "Item url: #{url}"
-					#liveurl = enum.live_url  
-					#logger.debug  "liveurl: #{liveurl}"
-				else 
-					url = nil
-					liveurl = nil
-				end
-				list[idx] = {"name" => enum.name, "class" => enum.class, "idx" => idx , "path" => path , "url" => url , "liveurl" => liveurl} 
+				#logger.debug  "Item idx :  #{enum.idx}"
+				#logger.debug  "Item path :  #{enum.path}"
+				list[idx] = {"name" => enum.name, "class" => enum.class, "idx" => idx , "path" => path  } 
 				idx += 1
 			end	
 		return list
+	end
+	def info(path)
+		item = "Command.ls"
+		itemPath = path.split( "/" )
+		logger.debug "ItemPath : #{itemPath}" 
+		itemPath.each do |gate|		
+			item += "[#{gate}].ls" if gate != itemPath.last
+			item += "[#{gate}]" if gate == itemPath.last
+		end
+		return (eval item).url
 	end
 end
 
@@ -116,12 +116,20 @@ get '/divxwebplayer.html' do
 	erb:divxwp,:locals => {:url => url }
 end
 
+get '/info.html' do
+	path = params[:path]
+	content = Wavc.new.info(params[:path])
+	logger.debug  "path : #{path}"
+	logger.debug  "content : #{content.inspect}"
+	erb:info,:locals => {:content => content }
+end
+
 get %r{/path/(([\d]\/?)*)} do
 	content = Wavc.new.walk(params[:captures].first)
 	logger.debug  "Request path: #{request.path}"
 	path = params[:captures].first
 	path = path.split("/")
 	logger.debug  "Forwarded path : #{path}"
-	erb:index,:locals => {:content => content,:request => request.path, :path => path }
+	erb:index,:locals => {:content => content,:request => request.path, :path => path}
 end
 
