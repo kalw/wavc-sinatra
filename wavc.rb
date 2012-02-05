@@ -87,8 +87,6 @@ class Wavc
 			(eval item).each do |enum|
 				logger.debug  "Item name  : #{enum.name}"
 				logger.debug  "Item class :  #{enum.class}"
-				#logger.debug  "Item idx :  #{enum.idx}"
-				#logger.debug  "Item path :  #{enum.path}"
 				list[idx] = {"name" => enum.name, "class" => enum.class, "idx" => idx , "path" => path  } 
 				idx += 1
 			end	
@@ -96,13 +94,19 @@ class Wavc
 	end
 	def info(path)
 		item = "Command.ls"
+		idx = 1
 		itemPath = path.split( "/" )
-		logger.debug "ItemPath : #{itemPath}" 
+		logger.debug "ItemPath : #{itemPath.inspect}" 
+		logger.debug "ItemLength : #{itemPath.length}" 
 		itemPath.each do |gate|		
-			item += "[#{gate}].ls" if gate != itemPath.last
-			item += "[#{gate}]" if gate == itemPath.last
+			item += "[#{gate}].ls" if idx != itemPath.length
+			item += "[#{gate}]" if idx == itemPath.length
+			idx += 1
 		end
-		return (eval item).url
+		logger.debug "ItemPathCommand : #{item}" 
+		list = {"name" => (eval item).name ,"url" => (eval item).url}
+		return list
+
 	end
 end
 
@@ -126,10 +130,10 @@ end
 
 get %r{/path/(([\d]\/?)*)} do
 	content = Wavc.new.walk(params[:captures].first)
-	logger.debug  "Request path: #{request.path}"
+	logger.debug  "Content: #{content.inspect}"
+	logger.debug  "Resquest Path: #{request.path}"
 	path = params[:captures].first
-	path = path.split("/")
 	logger.debug  "Forwarded path : #{path}"
-	erb:index,:locals => {:content => content,:request => request.path, :path => path}
+	erb:index,:locals => {:content => content, :request => request.path, :path => path}
 end
 
