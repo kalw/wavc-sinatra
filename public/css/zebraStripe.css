@@ -1,0 +1,13 @@
+table[zebra] { border: 1px solid #f4f4f4; border-collapse: collapse; }
+table[zebra] { height: 1.6em; cursor: pointer; }
+table[zebra] { color: #505050; font-size: 0.85em; width: 100%; }
+
+table[zebra] tr[zebra=even] { background-color: #ffffff; }
+table[zebra] tr[zebra=odd] { background-color: #f0f0f0; }
+
+table[zebra] tr[highlight] { color: black; background-color: #e8f0ff; }
+table[zebra] tr[zebra=even][marked] { color: #500000; background-color: #e8ffe0; }
+table[zebra] tr[zebra=odd][marked] { color: #500000; background-color: #d8f0d0; }
+
+table[zebra] td { height: 1.6em; padding-left: 0.5em; }
+table[zebra] th { height: 1.6em; padding-left: 0.5em; border-bottom: 1px solid #c0c0c0;}
