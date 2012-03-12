@@ -35,7 +35,7 @@ helpers do
 			width="320"
 			height="260"
 			autoPlay="false"
-			pluginspage="http://go.divx.com/plugin/download/"
+			pluginspage="http://go.divx.com/plugin/download/">
 		</embed>
 		</object>
 		<br />No video? <a href="http://www.divx.com/software/divx-plus/web-player" target="_blank">Download</a> the DivX Plus Web Player.
