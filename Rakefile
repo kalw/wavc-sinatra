@@ -10,3 +10,5 @@ end
 file "Gemfile.lock" => "Gemfile" do
   sh "bundle && touch Gemfile.lock"
 end
+
+task :default => 'run'
