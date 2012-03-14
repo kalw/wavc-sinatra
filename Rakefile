@@ -2,7 +2,7 @@ APP = "wavc-sinatra"
 
 desc "run app locally"
 task :run => "Gemfile.lock" do
-  require 'app'
+  require 'wavc'
   Sinatra::Application.run!
 end
 
