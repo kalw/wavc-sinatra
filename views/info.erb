@@ -5,6 +5,9 @@
 			<%="#{content['name']}"%>
                 <%="</td> "%>
                 <%="<td> "%>
+			<%="<a id=\"airplay\" class=\"divxwp\" rel=\"facebox\" href=\"/airplay.html?live_url=#{content['live_url']}\"><img src=\"/images/tv.png\"  ></a>"%>
+                <%="</td> "%>
+                <%="<td> "%>
 			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"/divxwebplayer.html?url=#{content['url']}\"><img src=\"/images/bullet_play.png\"  ></a>"%>
                 <%="</td> "%>
                 <%="<td> "%>
@@ -18,3 +21,23 @@
         <%="</tr> "%>
 </tbody>
 </table>
+<script>
+$(document).ready(function(){   
+$("a").click(function(){   
+page=($(this).attr("href")); 
+$.ajax({ 
+url: page, 
+cache: false, 
+success:function(html){ 
+afficher(html);     
+},
+error:function(XMLHttpRequest, textStatus, errorThrows){ 
+}
+});
+return false; 
+});
+});function afficher(donnees){ 
+$("#contenu").empty(); 
+$("#contenu").append(donnees); 
+}
+</script>

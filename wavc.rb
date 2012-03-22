@@ -1,6 +1,7 @@
 require 'rubygems' if RUBY_VERSION < "1.9"
 require 'sinatra'
 require 'airvideo'
+require 'airplay'
 require 'yaml'
 require 'logger'
 
@@ -18,6 +19,7 @@ logger.level = Logger::ERROR
 end
 
 Command = AirVideo::Client.new( "#{CONFIG["airvideo_server"]}" , "#{CONFIG["airvideo_port"]}" , "#{CONFIG["airvideo_passwd"]}" )	
+Coincoin = Airplay::Client.new
 
 helpers do
 	def divxplayer(url)
@@ -70,6 +72,10 @@ helpers do
 	    </object>
 	  EOF
 	end
+	def airplay(live_url)
+		logger.debug "airplay live_url : #{live_url}"
+		player = Coincoin.send_video("#{live_url}")
+	end
 
 end
 
@@ -104,7 +110,8 @@ class Wavc
 			idx += 1
 		end
 		logger.debug "ItemPathCommand : #{item}" 
-		list = {"name" => (eval item).name ,"url" => (eval item).url}
+		ressource = (eval item)
+		list = {"name" => ressource.name ,"url" => ressource.url ,"live_url"=> ressource.live_url }
 		return list
 
 	end
@@ -112,6 +119,12 @@ end
 
 get '/' do
   redirect '/path/'
+end
+
+get '/airplay.html' do
+	live_url = params[:live_url]
+	logger.debug  "html param live_url : #{live_url}"
+	erb:airplay,:locals => {:live_url => live_url },:layout => :layout_lite
 end
 
 get '/divxwebplayer.html' do
