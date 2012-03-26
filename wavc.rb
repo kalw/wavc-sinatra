@@ -1,7 +1,7 @@
 require 'rubygems' if RUBY_VERSION < "1.9"
 require 'sinatra'
 require 'airvideo'
-require 'airplay'
+require 'airplay-ng'
 require 'yaml'
 require 'logger'
 
