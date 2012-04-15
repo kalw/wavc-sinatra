@@ -7,7 +7,8 @@
 
 
 	$ gem install sinatra
-	$ gem install airvideo
+	$ gem install airvideo-ng
+	$ gem install logger
 	$ git clone https://kalw@github.com/kalw/wavc-sinatra.git
 
 
