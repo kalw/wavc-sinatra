@@ -1,7 +1,7 @@
 require 'rubygems' if RUBY_VERSION < "1.9"
 require 'sinatra'
 require 'airvideo-ng'
-require 'airplay'
+require 'airplay' if (RUBY_PLATFORM =~ /darwin/)
 require 'yaml'
 require 'logger'
 
@@ -20,7 +20,9 @@ end
 
 Command = AirVideo::Client.new( "#{CONFIG["airvideo_server"]}" , "#{CONFIG["airvideo_port"]}" , "#{CONFIG["airvideo_passwd"]}" ) rescue "No Airvideo Server" 
 
-Coincoin = Airplay::Client.new rescue "No Airvideo Client"
+if (RUBY_PLATFORM =~ /darwin/)
+	Coincoin = Airplay::Client.new rescue "No Airvideo Client" 
+end
 
 helpers do
 	def divxplayer(url)
@@ -75,7 +77,9 @@ helpers do
 	end
 	def airplay(live_url)
 		logger.debug "airplay live_url : #{live_url}"
-		player = Coincoin.send_video("#{live_url}")
+		if (RUBY_PLATFORM =~ /darwin/)
+			player = Coincoin.send_video("#{live_url}")
+		end
 	end
 
 end

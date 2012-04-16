@@ -5,7 +5,9 @@
 			<%="#{content['name']}"%>
                 <%="</td> "%>
                 <%="<td> "%>
+		<% if (RUBY_PLATFORM =~ /darwin/) %>
 			<%="<a id=\"airplay\" class=\"divxwp\" rel=\"facebox\" href=\"/airplay.html?live_url=#{content['live_url']}\"><img src=\"/images/tv.png\"  ></a>"%>
+		<% end %>
                 <%="</td> "%>
                 <%="<td> "%>
 			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"/divxwebplayer.html?url=#{content['url']}\"><img src=\"/images/bullet_play.png\"  ></a>"%>
