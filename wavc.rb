@@ -18,8 +18,9 @@ else
 logger.level = Logger::ERROR
 end
 
-Command = AirVideo::Client.new( "#{CONFIG["airvideo_server"]}" , "#{CONFIG["airvideo_port"]}" , "#{CONFIG["airvideo_passwd"]}" )	
-Coincoin = Airplay::Client.new
+Command = AirVideo::Client.new( "#{CONFIG["airvideo_server"]}" , "#{CONFIG["airvideo_port"]}" , "#{CONFIG["airvideo_passwd"]}" ) rescue "No Airvideo Server" 
+
+Coincoin = Airplay::Client.new rescue "No Airvideo Client"
 
 helpers do
 	def divxplayer(url)
