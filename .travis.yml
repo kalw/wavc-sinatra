@@ -7,5 +7,5 @@ rvm:
   - jruby-18mode
   - ruby-head
 gemfile: gemfiles/Gemfile.ci
-before_script: "ls /etc/ |grep -i release"
-script: "bundle exec"
+before_script: "sudo apt-get install libmp3lame-dev libfaad-dev libx264-dev mpeg4ip-server faac ffmpeg java"
+script: "bundle exec rake"
