@@ -1,0 +1,11 @@
+
+rvm:
+  - 1.8.7 # (par défaut)
+  - 1.9.2
+  - rbx-18mode
+  - ree
+  - jruby-18mode
+  - ruby-head
+gemfile: gemfiles/Gemfile.ci
+before_script: "ls /etc/ |grep -i release"
+script: "bundle exec"
