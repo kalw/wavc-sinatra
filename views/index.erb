@@ -6,14 +6,14 @@ jQuery(document).ready(function($) {
 })
 </script>
 
-<table border=0 zebra="navigation">
+<table border=0 zebra="navigation" style="max-width: 150px;" >
 <tbody>
 	<%="<tr> "%>
 		<%="<td> "%>
 		<%="</td> "%>
 		<%="<td> "%>
 			<% if !path.empty?  %>
-				<%="<center><a href=\"#{request}\/..\">..</a></center>"%>
+				<%="<center><a href=\""+ request.gsub(/\/$/, '')+"\/..\">..</a></center>"%>
 			<% end %>
 		<%="</td> "%>
 		<%="<td> "%>
