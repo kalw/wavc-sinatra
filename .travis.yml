@@ -2,4 +2,4 @@
 rvm:
   - 1.8.7 # (par défaut)
 gemfile: gemfiles/Gemfile.ci
-before_script: " apt-get install libmp3lame-dev libfaad-dev libx264-dev faac ffmpeg &&  wget -O /tmp/airvideo.test.server.jar http://inmethod.com/air-video/download/linux/alpha4/AirVideoServerLinux.jar && echo 'folders= test:/tmp' > /tmp/test.properties && java -jar /tmp/airvideo.test.server.jar /tmp/test.properties > /dev/null &  " 
+before_script: " apt-get install libmp3lame-dev libfaad-dev libx264-dev faac ffmpeg &&  wget -O /tmp/airvideo.test.server.jar http://inmethod.com/air-video/download/linux/alpha4/AirVideoServerLinux.jar && java -jar /tmp/airvideo.test.server.jar /tmp/test.properties &  " 
