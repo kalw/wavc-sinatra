@@ -2,10 +2,6 @@
 rvm:
   - 1.8.7 # (par défaut)
   - 1.9.2
-  - rbx-18mode
-  - ree
-  - jruby-18mode
-  - ruby-head
 gemfile: gemfiles/Gemfile.ci
-before_script: "sudo apt-get install libmp3lame-dev libfaad-dev libx264-dev mpeg4ip-server faac ffmpeg java"
+before_script: "sudo whereis java" 
 script: "bundle exec rake"
