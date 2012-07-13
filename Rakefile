@@ -3,7 +3,7 @@ APP = "wavc-sinatra"
 desc "run app locally"
 task :run => "Gemfile.lock" do
   require 'wavc'
-  Sinatra::Application.run!
+  Sinatra::Application
 end
 
 # need to touch Gemfile.lock as bundle doesn't touch the file if there is no change
