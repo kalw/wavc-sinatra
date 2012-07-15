@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Wavc-sinatra by kalw</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Wavc-sinatra</h1>
+        <p>Web AirVideo Client .</p>
+        <p class="view"><a href="https://github.com/kalw/wavc-sinatra">View the Project on GitHub <small>kalw/wavc-sinatra</small></a></p>
+        <ul>
+          <li><a href="https://github.com/kalw/wavc-sinatra/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kalw/wavc-sinatra/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kalw/wavc-sinatra">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>WAVC</h1>
+
+<p><a href="http://travis-ci.org/kalw/wavc-sinatra"><img src="https://secure.travis-ci.org/kalw/wavc-sinatra.png?branch=master" alt="Build Status"></a></p>
+
+<h2>INSTALLATION</h2>
+
+<pre><code>$ gem install sinatra
+$ gem install airvideo-ng
+$ gem install airplay
+$ gem install logger
+$ git clone https://kalw@github.com/kalw/wavc-sinatra.git
+</code></pre>
+
+<h2>USAGE</h2>
+
+<h4>Go into the application folder</h4>
+
+<pre><code>$ cd wavc-sinatra
+</code></pre>
+
+<h4>Copy settings-sample.yml to settings.yml</h4>
+
+<pre><code>$ cp settings-sample.yml settings.yml
+</code></pre>
+
+<h4>Edit the 3 variables with server address, port and password of the airvideo server.</h4>
+
+<pre><code>---
+airvideo_server: "0.0.0.0"
+airvideo_port: "45631"
+airvideo_passwd: "passwd" 
+</code></pre>
+
+<h4>Launch the app</h4>
+
+<pre><code>$ ruby wavc.rb
+</code></pre>
+
+<h4>Connect to http://localhost:4567/path/</h4>
+
+<h2>FAQ</h2>
+
+<p><strong>Q:</strong><br><strong>A:</strong> </p>
+
+<h2>TODO</h2>
+
+<p>Have a look at the <a href="https://github.com/kalw/wavc-sinatra/wiki">Wiki</a></p>
+
+<h2>CONTRIBUTING</h2>
+
+<p>Please report issues on the <a href="https://github.com/kalw/wavc-sinatra/issues">Github issue
+tracker</a></p>
+
+<h2>License</h2>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/kalw">kalw</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
