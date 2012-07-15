@@ -5,7 +5,39 @@ APP = "wavc-sinatra"
   require 'test/unit'
 
 
-desc "Test Wavc"
+desc "Travis tests for Wavc"
+task :travis => "Gemfile.lock" do
+
+	class WavcTest < Test::Unit::TestCase
+	  include Rack::Test::Methods
+	
+	  def app
+	    Sinatra::Application
+	  end
+	
+	  def test_it_runs
+	    get '/'
+#	    assert last_response.ok?
+	    last_response.body.include?('HOME')
+	  end
+
+	  def test_it_connects
+	    get '/path/'
+	    assert last_response.ok?
+	    last_response.body.include?('HOME')
+	  end
+
+	  def test_it_connects_and_list_ressources
+	    get '/path/0'
+	    assert last_response.ok?
+	    last_response.body.include?('HOME')
+	  end
+
+	end
+
+end
+
+desc "Local tests for Wavc"
 task :run => "Gemfile.lock" do
 
 	class WavcTest < Test::Unit::TestCase
