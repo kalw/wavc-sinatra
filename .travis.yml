@@ -3,15 +3,16 @@ rvm:
   - 1.8.7 # (par défaut)
 gemfile: Gemfile.ci
 before_install: 
-  - sed -e 's/password//' -e 's/0.0.0.0/127.0.0.1/' settings-sample.yml > settings.yml
+  - sed -e 's/password/coincoin/' -e 's/0.0.0.0/127.0.0.1/' settings-sample.yml > settings.yml
   - sudo apt-get install -y libmp3lame-dev libfaad-dev libx264-dev faac ffmpeg libavahi-compat-libdnssd-dev
   - sudo wget -O /tmp/airvideo.test.server.jar http://inmethod.com/air-video/download/linux/alpha4/AirVideoServerLinux.jar 
   - echo 'path.mp4creator = `which mp4creator`' >>  /tmp/test.properties
   - echo 'path.ffmpeg = `which ffmpeg`' >>  /tmp/test.properties
   - echo 'path.faac = `which faac`' >>  /tmp/test.properties
-  - echo 'password = ' >>  /tmp/test.properties
+  - echo 'password = coincoin' >>  /tmp/test.properties
   - echo 'subtitles.encoding = windows-1250' >>  /tmp/test.properties
   - echo 'subtitles.font = Verdana' >>  /tmp/test.properties
   - echo 'folders = test:/tmp' >>  /tmp/test.properties
   - sudo wget -O /tmp/opensourcevideo.avi http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi
   - sudo java -jar /tmp/airvideo.test.server.jar /tmp/test.properties > /dev/null &
+  - sleep 5
