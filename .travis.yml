@@ -15,7 +15,3 @@ before_install:
   - echo 'folders = test:/tmp' >>  /tmp/test.properties
   - sudo wget -O /tmp/opensourcevideo.avi http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi
   - sudo java -jar /tmp/airvideo.test.server.jar /tmp/test.properties > /dev/null &
-
-password = coincoinfitlecanard
-subtitles.encoding = windows-1250
-subtitles.font = Verdana
