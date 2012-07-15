@@ -16,4 +16,4 @@ before_install:
   - sudo wget -O /tmp/opensourcevideo.avi http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi
   - sudo java -jar /tmp/airvideo.test.server.jar /tmp/test.properties > /dev/null &
   - sleep 5
-script: "bundle rake travis"
+script: "bundle exec rake travis"
