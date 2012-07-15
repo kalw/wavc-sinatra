@@ -1,6 +1,6 @@
 # WAVC
 
-
+[![Build Status](https://secure.travis-ci.org/kalw/wavc-sinatra.png?branch=master)](http://travis-ci.org/kalw/wavc-sinatra)
 
 
 ## INSTALLATION
