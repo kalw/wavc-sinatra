@@ -9,6 +9,13 @@ before_install:
   - echo 'path.mp4creator = `which mp4creator`' >>  /tmp/test.properties
   - echo 'path.ffmpeg = `which ffmpeg`' >>  /tmp/test.properties
   - echo 'path.faac = `which faac`' >>  /tmp/test.properties
+  - echo 'password = ' >>  /tmp/test.properties
+  - echo 'subtitles.encoding = windows-1250' >>  /tmp/test.properties
+  - echo 'subtitles.font = Verdana' >>  /tmp/test.properties
   - echo 'folders = test:/tmp' >>  /tmp/test.properties
   - sudo wget -O /tmp/opensourcevideo.avi http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi
   - sudo java -jar /tmp/airvideo.test.server.jar /tmp/test.properties > /dev/null &
+
+password = coincoinfitlecanard
+subtitles.encoding = windows-1250
+subtitles.font = Verdana
