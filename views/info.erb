@@ -1,15 +1,11 @@
-<table border=0 zebra="navigation" style="max-width: 150px;">
+<table border=0 zebra="navigation" >
 <tbody>
         <%="<tr> "%>
                 <%="<td> "%>
 			<%="#{content['name']}"%>
                 <%="</td> "%>
-        <%="</tr> "%>
-        <%="<tr> "%>
                 <%="<td> "%>
-		<% if (RUBY_PLATFORM =~ /darwin/) %>
 			<%="<a id=\"airplay\" class=\"divxwp\" rel=\"facebox\" href=\"/airplay.html?live_url=#{content['live_url']}\"><img src=\"/images/tv.png\"  ></a>"%>
-		<% end %>
 			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"/divxwebplayer.html?url=#{content['url']}\"><img src=\"/images/bullet_play.png\"  ></a>"%>
 			<%="<a class=\"divxwp\" rel=\"facebox\" href=\"http://192.168.128.16:8080/xbmcCmds/xbmcHttp?command=ExecBuiltIn%28PlayMedia%28#{content['url']}%29%29\"><img src=\"/images/xbmc16.png\"  ></a>"%>
 			<%=""+ clippy(content['url'])+"" %>
