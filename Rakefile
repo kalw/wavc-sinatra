@@ -34,7 +34,7 @@ task :run => "Gemfile.lock" do
 	  end
 
 	  def test_it_gather_info_from_video
-	    get '/info.html', :path => '0/1'
+	    get '/info.html', :path => '0/0'
 	    assert last_response.ok?
 	    last_response.body.include?('HOME')
 	  end
