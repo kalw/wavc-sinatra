@@ -6,18 +6,13 @@
 ## INSTALLATION
 
 
-	$ gem install sinatra
-	$ gem install airvideo-ng
-	$ gem install airplay
-	$ gem install logger
 	$ git clone https://kalw@github.com/kalw/wavc-sinatra.git
+	$ cd wavc-sinatra
+	$ bundle install
 
 
 ## USAGE
 
-#### Go into the application folder
-	
-	$ cd wavc-sinatra
 
 #### Copy settings-sample.yml to settings.yml
 
@@ -34,7 +29,7 @@
 
 	$ ruby wavc.rb
 
-#### Connect to http://localhost:4567/path/
+#### Connect to http://localhost:4567/
 
 ## FAQ
 
