@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'sinatra','1.2.6'
+gem "sinatra", ">= 4.1.0"
 gem 'airvideo-ng','0.0.9.1'
 gem 'airplay'
 gem 'logger'
